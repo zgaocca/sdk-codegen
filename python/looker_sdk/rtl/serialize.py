@@ -30,12 +30,16 @@ import keyword
 # ignoring "Module 'typing' has no attribute 'ForwardRef'"
 from typing import (  # type: ignore
     Callable,
-    ForwardRef,
     MutableMapping,
     Sequence,
     Type,
     Union,
 )
+
+try:
+    from typing import ForwradRef
+except ImportError:
+    from typing import _ForwardRef as ForwardRef # Add Python 3.6 support
 
 import cattr
 
